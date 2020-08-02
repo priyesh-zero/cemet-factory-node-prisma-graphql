@@ -1,0 +1,32 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+nav { 
+    display: flex;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: #dddddd;
+}
+
+thead {
+    background-color: #333333;
+    color: #ddd;
+}
+td, th {
+    padding: 0.5rem;
+}
+
+.product-name,  .user-name{
+    cursor: pointer;
+}
+
+li {
+    margin-left: 15px;
+}

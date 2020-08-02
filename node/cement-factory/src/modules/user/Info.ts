@@ -6,6 +6,15 @@ import { Cart } from "../cart/Cart";
 
 @Resolver(User)
 export class InfoResolver {
+
+    @FieldResolver(() => Number)
+    async cartQty(@Root() user: User): Promise<Number> {
+        return (await prisma.user
+            .findOne({ where: { id: user.id } })
+            .Cart()).length;
+    }
+
+
     @FieldResolver(() => [Cart])
     async cartItems(@Root() user: User): Promise<Cart[]> {
         return await prisma.user

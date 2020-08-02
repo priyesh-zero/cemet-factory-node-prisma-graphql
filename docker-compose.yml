@@ -3,6 +3,7 @@ version: '3'
 services:
 
     node:
+        container_name: server
         image: node
         restart: always
         working_dir: /usr/src/app
@@ -15,6 +16,7 @@ services:
         command: ["yarn", "dev"]
 
     postgres:
+        container_name: postgres
         image: postgres
         volumes:
             - ./data:/var/lib/postgresql/data
@@ -24,5 +26,18 @@ services:
             POSTGRES_DB: $POSTGRES_DB
 
     redis:
+        container_name: redis
         image: redis:alpine
         restart: always
+
+    client:
+        container_name: client
+        image: node
+        working_dir: /usr/src/app
+        ports:
+            - 3000:3000
+        volumes:
+            - ./clients:/usr/src/app
+            - ./node/cement-factory/images:/usr/src/app/assets/images
+        user: $CURRENT_USER
+        command: ["npx", "lite-server"]

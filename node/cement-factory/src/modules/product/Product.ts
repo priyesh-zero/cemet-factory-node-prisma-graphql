@@ -24,7 +24,7 @@ export class Product {
 
     @Field()
     url?(@Root() parent: Product): string {
-        return `${"http://127.0.0.1/images/"}${parent.image}`;
+        return `${"http://127.0.0.1:3000/assets/images/"}${parent.image}`;
     }
 
     @Field()
