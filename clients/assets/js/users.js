@@ -2,13 +2,13 @@ const tBody = document.querySelector("#tableBody")
 
 document.addEventListener("DOMContentLoaded", async () => {
     const query = `query{
-  users{
-    id
-    fullName
-    email
-    phone
-  }
-}`
+                      users{
+                            id
+                            fullName
+                            email
+                            phone
+                        }
+                    }`
     const response = await useFetch(query)
     console.log(response.data.users)
     const html = response.data.users.map((user, index) => `
