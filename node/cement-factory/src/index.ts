@@ -13,10 +13,13 @@ import cors from "cors";
 import { redis } from "./redis";
 import { LoginResolver } from "./modules/user/Login";
 import { MeResolver } from "./modules/user/Me";
+import { InfoResolver } from "./modules/user/Info";
+import {ProductInfoResolver} from "./modules/product/ProductInfo";
+import {CreateProductResolver} from "./modules/product/CreateProduct"
 
 const main = async () => {
     const schema = await buildSchema({
-        resolvers: [RegisterResolver, LoginResolver, MeResolver]
+        resolvers: [RegisterResolver, LoginResolver, MeResolver, InfoResolver, ProductInfoResolver, CreateProductResolver]
     });
 
     const apolloServer = new ApolloServer({
