@@ -1,40 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Products | Cement Factory</title>
+        <link rel="stylesheet" href="../../assets/css/master.css" />
+        <script src="../../assets/js/master.js"></script>
+        <script src="../../assets/js/products.js" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products | Cement Factory</title>
-    <link rel="stylesheet" href="../../assets/css/master.css">
-    <script src="../../assets/js/master.js"></script>
-    <script src="../../assets/js/products.js" defer></script>
-</head>
+    <body>
+        <h2>Welcome to the Product's Page</h2>
+        <nav>
+            <nav><a href="/admin/index.html">Admin Page</a></nav>
+            <nav><a href="/admin/user/index.html">User Page</a></nav>
+            <nav><a href="/admin/product/index.html">Products Page</a></nav>
+            <nav><a href="/admin/cart/index.html">Cart Page Page</a></nav>
+        </nav>
 
-<body>
-    <h2>Welcome to the Product's Page</h2>
-    <nav>
-        <nav><a href="/admin/index.html">Admin Page</a></nav>
-        <nav><a href="/admin/user/index.html">User Page</a></nav>
-        <nav><a href="/admin/product/index.html">Products Page</a></nav>
-        <nav><a href="/admin/cart/index.html">Cart Page Page</a></nav>
-    </nav>
+        <h3>Add New Product</h3>
 
+        <form action="#" id="product-form">
+            <label for="productName">Name</label>
+            <input
+                type="text"
+                id="productName"
+                name="productName"
+                placeholder="Product Name"
+                required
+            />
+            <label for="productDescription">Description</label>
+            <textarea
+                type="text"
+                id="productDescription"
+                name="productDescription"
+                placeholder="Product Description"
+                required
+            ></textarea>
+            <label for="productQuantity">Quantity</label>
+            <input
+                type="number"
+                id="productQuantity"
+                name="productQuantity"
+                placeholder="Product Quantity"
+                required
+            />
+            <label for="productPrice">Price</label>
+            <input
+                type="number"
+                id="productPrice"
+                name="productPrice"
+                placeholder="Product Price"
+                required
+            />
+            <label for="productImage"></label>
+            <input type="file" id="productImage" name="productImage" />
+            <input type="submit" value="Add" />
+        </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-        </tbody>
-    </table>
-    <div id="product-info">
-    </div>
-</body>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        <div id="product-info"></div>
+    </body>
 </html>

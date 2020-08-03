@@ -1,11 +1,12 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-nav { 
+nav {
     display: flex;
     padding: 0.5rem;
     cursor: pointer;
@@ -19,14 +20,20 @@ thead {
     background-color: #333333;
     color: #ddd;
 }
-td, th {
+td,
+th {
     padding: 0.5rem;
 }
 
-.product-name,  .user-name{
+.product-name,
+.user-name {
     cursor: pointer;
 }
 
 li {
     margin-left: 15px;
+}
+
+img {
+    max-width: 500px;
 }
