@@ -1,7 +1,5 @@
 import { InputType, Field } from "type-graphql";
 import { Min, Length } from "class-validator";
-import { Upload } from "src/types/Upload";
-import { GraphQLUpload } from "graphql-upload";
 
 @InputType()
 export class ProductInput {
