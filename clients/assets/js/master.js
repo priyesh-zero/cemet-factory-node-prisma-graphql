@@ -3,6 +3,7 @@ const useFetch = async (query, variables = {}, headers = HEADERS) => {
     return fetch("http://127.0.0.1:4000/graphql", {
         method: "POST",
         headers,
+        credentials: "include",
         body: JSON.stringify({
             query,
             variables

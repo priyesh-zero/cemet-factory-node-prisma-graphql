@@ -21,4 +21,16 @@ export class MeResolver {
 
         return user;
     }
+
+    @Query(() => Boolean)
+    async logout(@Ctx() ctx: Context): Promise<Boolean> {
+        return new Promise((resolve, _reject) => {
+            if (!ctx.req.session) {
+                return resolve(false);
+            }
+            ctx.req.session.destroy(err => {
+                resolve(err === null);
+            });
+        });
+    }
 }

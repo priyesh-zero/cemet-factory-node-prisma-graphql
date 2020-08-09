@@ -9,17 +9,26 @@ import { buildSchema } from "type-graphql";
 import { RegisterResolver } from "./modules/user/Register";
 import session from "express-session";
 import connectRedis from "connect-redis";
-import cors from "cors";
+// import cors from "cors";
 import { redis } from "./redis";
 import { LoginResolver } from "./modules/user/Login";
 import { MeResolver } from "./modules/user/Me";
 import { InfoResolver } from "./modules/user/Info";
-import {ProductInfoResolver} from "./modules/product/ProductInfo";
-import {CreateProductResolver} from "./modules/product/CreateProduct"
+import { ProductInfoResolver } from "./modules/product/ProductInfo";
+import { CreateProductResolver } from "./modules/product/CreateProduct";
+import { PaymentResolver } from "./modules/payment/Payment";
 
 const main = async () => {
     const schema = await buildSchema({
-        resolvers: [RegisterResolver, LoginResolver, MeResolver, InfoResolver, ProductInfoResolver, CreateProductResolver]
+        resolvers: [
+            RegisterResolver,
+            LoginResolver,
+            MeResolver,
+            InfoResolver,
+            ProductInfoResolver,
+            CreateProductResolver,
+            PaymentResolver
+        ]
     });
 
     const apolloServer = new ApolloServer({
@@ -31,12 +40,12 @@ const main = async () => {
 
     const RedisStore = connectRedis(session);
 
-    app.use(
-        cors({
-            credentials: true,
-            origin: process.env.CLIENT_HOST
-        })
-    );
+    // app.use(
+    //     cors({
+    //         credentials: true,
+    //         origin: process.env.CLIENT_HOST
+    //     })
+    // );
 
     app.use(
         session({
@@ -50,12 +59,19 @@ const main = async () => {
             cookie: {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === "production",
+                //path: "graphql",
                 maxAge: 1000 * 60 * 60 * 24 // 1 day
             }
         })
     );
 
-    apolloServer.applyMiddleware({ app });
+    apolloServer.applyMiddleware({
+        app,
+        cors: {
+            credentials: true,
+            origin: process.env.CLIENT_HOST
+        }
+    });
 
     app.listen(4000, () => {
         console.log("Server started on PORT 4000");

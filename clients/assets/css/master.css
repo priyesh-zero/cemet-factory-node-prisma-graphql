@@ -37,3 +37,20 @@ li {
 img {
     max-width: 500px;
 }
+
+span {
+    padding: 20px;
+}
+
+#example-1 h2 {
+    color: #fff;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+#example-1 h2 small {
+    display: block;
+    text-transform: lowercase;
+    text-align: right;
+}
