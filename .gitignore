@@ -2,3 +2,5 @@ data/
 **/node_modules/
 **/.env
 **/images/**
+**/yarn.lock
+**/*-lock.json
